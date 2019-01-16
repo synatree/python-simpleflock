@@ -36,13 +36,7 @@ class SimpleFlock:
       os.close(self._fd)
       self._fd = None
 
-      # Try to remove the lock file, but don't try too hard because it is
-      # unnecessary. This is mostly to help the user see whether a lock
-      # exists by examining the filesystem.
-      try:
-         os.unlink(self._path)
-      except:
-         pass
+      # Don't remove the lockfile at all because it causes problems.
 
 if __name__ == "__main__":
    print("Acquiring lock...")
